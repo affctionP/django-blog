@@ -1,0 +1,65 @@
+{% extends 'base.html'%}
+{% load static%}
+
+{% block content %}
+<div class="page-title db" dir="rtl">
+    <div class="container">
+
+
+<section class="section lb">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                <div class="sidebar">
+                    <div class="widget-no-style">
+                        <div class="newsletter-widget text-center align-self-center">
+                            
+                            <div class="banner-img">
+                                
+                                <img src="{% static 'images/vaji.jpg' %}" alt="" class="img-fluid">
+                            </div><!-- end banner-img -->
+                        </div><!-- end newsletter -->
+                    </div>
+
+                    <div id="" class="widget">
+                        <div class="banner-spot clearfix">
+
+                        </div><!-- end banner -->
+                    </div><!-- end widget -->
+                </div><!-- end sidebar -->
+            </div><!-- end col -->
+            
+            <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+                <div class="page-wrapper">
+                    <div class="row">
+
+
+                        <div class="col-lg-8">
+                            <h4>درباره من</h4>
+                            <p>If you’d like to write for us, <a href="#">advertise with us</a> or just say hello, fill out the form below and we’ll get back to you as soon as possible.</p>
+                        </div>
+                    </div><!-- end row -->
+
+                    <hr class="invis">
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <form class="form-wrapper">
+                            <h4>Contact form</h4>
+                                <input type="text" class="form-control" placeholder="Your name">
+                                <input type="text" class="form-control" placeholder="Email address">
+                                <input type="text" class="form-control" placeholder="Phone">
+                                <input type="text" class="form-control" placeholder="Subject">
+                                <textarea class="form-control" placeholder="Your message"></textarea>
+                                <button type="submit" class="btn btn-primary">Send <i class="fa fa-envelope-open-o"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div><!-- end page-wrapper -->
+            </div><!-- end col -->
+        </div><!-- end row -->
+    </div><!-- end container -->
+</section>
+</div><!-- end container -->
+</div><!-- end page-title --
+{% endblock %}

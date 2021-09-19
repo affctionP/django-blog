@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load jalali_tags %}
+
+
+
+
+        {% block content %}
+
+        <section class="section lb m3rem">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+                        <div class="page-wrapper">
+                            <div class="blog-custom-build">
+                                {% for obj  in  results %}
+                                <div class="blog-box wow fadeIn">
+                                    <div class="post-media">
+                                        <a href="{%url 'posts:single'  obj.slug %}" title=""></a>
+
+                                            <div class="hovereffect">
+                                                <span></span>
+                                            </div>
+                                            <!-- end hover -->
+                                        </a>
+                                    </div>
+                                    <!-- end media -->
+                                    <div class="blog-meta big-meta text-center">
+                                       
+                                        <h4><a href="{% url 'posts:single'  obj.slug %}" title="">{{obj.title}}</a></h4>
+                                        <p>{{ obj.body|safe|striptags|truncatewords:30}}}</p>
+                                        <small><a href="marketing-category.html" title="">Make Money</a></small>
+                                        <small><a href="marketing-single.html" title="">24 July, 2017</a></small>
+                                        <small><a href="#" title="">by Jack</a></small>
+                                        <small><a href="#" title=""><i class="fa fa-eye"></i> 2291</a></small>
+                                    </div><!-- end meta -->
+                                </div><!-- end blog-box -->
+
+                                <hr class="invis">
+                                {% endfor %}
+
+
+
+                            </div>
+                        </div>
+
+                        <hr class="invis">
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <nav aria-label="Page navigation">
+                                    <ul class="pagination justify-content-center">
+                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#">Next</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div><!-- end col -->
+                        </div><!-- end row -->
+                    </div><!-- end col -->
+                    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                        <div class="sidebar">
+
+
+                            <div class="widget">
+                                {% include "newletter.html" %}
+                                <h2 class="widget-title">Recent Posts</h2>
+                                <div class="blog-list-widget">
+                                    <div class="list-group">
+ 
+
+          
+
+                                        <a href="marketing-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                                            <div class="w-100 last-item justify-content-between">
+                                                <img src="upload/small_09.jpg" alt="" class="img-fluid float-left">
+                                                <h5 class="mb-1">Did you see the most beautiful sea in the world?</h5>
+                                                <small>07 Jan, 2016</small>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div><!-- end blog-list -->
+                            </div><!-- end widget -->
+
+                            <div id="" class="widget">
+                                <h2 class="widget-title">Advertising</h2>
+                                <div class="banner-spot clearfix">
+                                    <div class="banner-img">
+                                        <img src="upload/banner_03.jpg" alt="" class="img-fluid">
+                                    </div><!-- end banner-img -->
+                                </div><!-- end banner -->
+                            </div><!-- end widget -->
+
+                            <div class="widget">
+                                <h2 class="widget-title">Instagram Feed</h2>
+                                <div class="instagram-wrapper clearfix">
+                                    <a class="" href="#"><img src="upload/small_09.jpg" alt="" class="img-fluid"></a>
+                                    <a href="#"><img src="upload/small_01.jpg" alt="" class="img-fluid"></a>
+
+                                    <a href="#"><img src="upload/small_08.jpg" alt="" class="img-fluid"></a>
+                                </div><!-- end Instagram wrapper -->
+                            </div><!-- end widget -->
+
+                            <div class="widget">
+                                <h2 class="widget-title">Popular Categories</h2>
+                                <div class="link-widget">
+                                    <ul>
+                                        <li><a href="#">Marketing <span>(21)</span></a></li>
+                                    </ul>
+                                </div><!-- end link-widget -->
+                            </div><!-- end widget -->
+                        </div><!-- end sidebar -->
+                    </div><!-- end col -->
+
+ 
+
+
+                </div><!-- end row -->
+            </div><!-- end container -->
+        </section>
+        {% endblock %}
+
+

@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load jalali_tags %}
+
+
+
+
+        {% block content %}
+
+        <section class="section lb m3rem" dir="rtl">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+                        <div class="page-wrapper">
+                            <div class="blog-custom-build">
+                                {% for obj in object_list %}
+                                <div class="blog-box wow fadeIn">
+                                    <div class="post-media">
+                                        <a href="{%url 'posts:single'  obj.slug %}" title="">
+                                           
+                                            <img src="{{obj.img_url }}" alt="" class="img-posts ">
+                                            
+                                            <div class="hovereffect">
+                                                <span></span>
+                                            </div>
+                                            <!-- end hover -->
+                                        </a>
+                                    </div>
+                                    <!-- end media -->
+                                    <div class="blog-meta big-meta text-center">
+                                        <div class="post-sharing">
+                                            <ul class="list-inline">
+                                                <li><a href="#" class="fb-button btn btn-primary"><i class="fa fa-whatsapp"></i> <span class="down-mobile"></a>
+                                                    <a href="#" class="tw-button btn btn-primary"><i class="fa fa-twitter"></i> <span class="down-mobile"></a>
+                                                    <a href="#" class="gp-button btn btn-primary"><i class="fa fa-google"></i></a></li>
+
+                                            </ul>
+                                        </div><!-- end post-sharing -->
+                                        <h4><a href="{% url 'posts:single'  obj.slug %}" title="">{{obj.title}}</a></h4>
+                                        <p>{{ obj.body|safe|striptags|truncatewords:30}}}</p>
+
+                                        <small><a href="" title="">{{obj.publish|to_jalali:'%y/%m/%d ساعت %H:%M:%S'}}</a></small>
+                                        <small><a href="{% url 'posts:about_me'%}" title=""> نویسنده : {{obj.auther.get_full_name}}</a></small>
+                                        
+                                    </div><!-- end meta -->
+                                </div><!-- end blog-box -->
+
+                                <hr class="invis">
+                                {% endfor %}
+
+
+
+                            </div>
+                        </div>
+
+                        <hr class="invis">
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <nav aria-label="Page navigation">
+
+                                {% if object_list.has_other_pages %}
+                                    <ul class="pagination justify-content-center">
+                                        {% if object_list.has_previous %}
+                                        <li><a href="?page={{ users.previous_page_number }}">&laquo;</a></li>
+                                        {% else %}
+                                        <li class="disabled"><span>&laquo;</span></li>
+                                        {% endif %}
+                                        {% for i in object_list.paginator.page_range %}
+                                        {% if object_list.number == i%}
+                                        <li class="page-item disabled"><a  class = "page-link">{{ i }}</a> </li>
+                                        {% else %}
+                                          <li class="page-item"><a  class = "page-link" href="?page={{ i }}">{{ i }}</a></li>
+                                        {% endif %}
+                                        {% endfor %}
+
+                                      {% if object_list.has_next %}
+                                      <li><a href="?page={{ object_list.next_page_number }}">&raquo;</a></li>
+                                    {% else %}
+                                      <li class="disabled"><span>&raquo;</span></li>
+                                    {% endif %}
+                                        
+
+
+                                    </ul>
+                                {% endif %}
+                                </nav>
+                            </div><!-- end col -->
+                        </div><!-- end row -->
+                    </div><!-- end col -->
+                    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                        <div class="sidebar">
+
+
+                            <div class="widget">
+                                {% include "newletter.html" %}
+                                <h2 class="widget-title">نوشته های اخیر</h2>
+                                <div class="blog-list-widget">
+                                    <div class="list-group">
+                                        {% for p in newPosts%}
+                                        <a href="{{p.get_absolute_url}}" class="list-group-item list-group-item-action flex-column align-items-start">
+                                            <div class="w-100 last-item justify-content-between">
+                                                <img src="{{p.img_url}}" alt="" class="img-fluid float-left">
+                                                <h5 class="mb-1">{{p.title}}</h5>
+                                                <small>{{p.publish|to_jalali:'%y/%m/%d _ %H:%M:%S'}}</small>
+                                            </div>
+                                        </a>
+                                        {% endfor %}
+ 
+
+          
+
+
+                                    </div>
+                                </div><!-- end blog-list -->
+                            </div><!-- end widget -->
+
+                            <div id="" class="widget">
+                                <h2 class="widget-title">Advertising</h2>
+                                <div class="banner-spot clearfix">
+                                    <div class="banner-img">
+                                        <img src="upload/banner_03.jpg" alt="" class="img-fluid">
+                                    </div><!-- end banner-img -->
+                                </div><!-- end banner -->
+                            </div><!-- end widget -->
+
+                            <div class="widget">
+                                <h2 class="widget-title">Instagram Feed</h2>
+                                <div class="instagram-wrapper clearfix">
+                                    <a class="" href="#"><img src="upload/small_09.jpg" alt="" class="img-fluid"></a>
+                                    <a href="#"><img src="upload/small_01.jpg" alt="" class="img-fluid"></a>
+
+                                    <a href="#"><img src="upload/small_08.jpg" alt="" class="img-fluid"></a>
+                                </div><!-- end Instagram wrapper -->
+                            </div><!-- end widget -->
+
+                            <div class="widget">
+                                <h2 class="widget-title">Popular Categories</h2>
+                                <div class="link-widget">
+                                    <ul>
+                                        <li><a href="#">Marketing <span>(21)</span></a></li>
+                                    </ul>
+                                </div><!-- end link-widget -->
+                            </div><!-- end widget -->
+                        </div><!-- end sidebar -->
+                    </div><!-- end col -->
+
+ 
+
+
+                </div><!-- end row -->
+            </div><!-- end container -->
+        </section>
+        {% endblock %}
+
+

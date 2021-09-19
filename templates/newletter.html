@@ -1,0 +1,10 @@
+<div class="newsletter-widget text-center align-self-center">
+    <h3>جدید ترین نوشته ها رو دریافت کنید</h3>
+    <p>ایمیل خودتون رو وارد کنید تا هر نوشته جدید سایت رو براتون ارسال کنیم</p>
+    <form class="" method="post" action="{% url  'subscribe:send_email' %}">
+    
+    {% csrf_token %}
+    {{ form.as_p }}
+        <input type="submit" value="ارسال" class="btn btn-default " style="margin-top: 10%;" />
+    </form>         
+</div><!-- end newsletter -->

@@ -1,0 +1,169 @@
+{% extends 'base.html'%}
+{%block title %} main page{% endblock%}
+{% load static %}
+{% load jalali_tags %}
+
+{% block content %}
+
+        <section id="cta" class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-12 align-self-center">
+                        
+                        <p class="lead">  وجیهه حسینی هستم <br>و در این وبسایت شخصی داستان های کوتاه و نوشته های خودم رو در اشتراک میگذارم</p>
+                        
+                    </div>
+                    <div class="col-lg-4 col-md-12">
+                        {% include "newletter.html"%}
+            
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section lb" dir="rtl">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+                        <div class="page-wrapper">
+                            <div class="blog-custom-build">
+                                {% for obj in object_list%}
+                                <div class="blog-box wow fadeIn">
+                                    <div class="post-media">
+                                        <a href="{%url 'posts:single'  obj.slug %}" title="">
+                                            
+                                            <img src="{{obj.img_url}}" alt="" class="img-posts ">
+                                            
+                                            <div class="hovereffect">
+                                                <span></span>
+                                            </div>
+                                            <!-- end hover -->
+                                        </a>
+                                    </div>
+                                    <!-- end media -->
+                                    <div class="blog-meta big-meta text-center">
+                                        <div class="post-sharing">
+                                            <ul class="list-inline">
+                                                <li><a href="#" class="fb-button btn btn-primary"><i class="fa fa-whatsapp"></i> <span class="down-mobile"></a>
+                                                    <a href="#" class="tw-button btn btn-primary"><i class="fa fa-twitter"></i> <span class="down-mobile"></a>
+                                                    <a href="#" class="gp-button btn btn-primary"><i class="fa fa-google"></i></a></li>
+                                            </ul>
+                                        </div><!-- end post-sharing -->
+                                        <h4><a href="{% url 'posts:single'  obj.slug %}" title="">{{obj.title}}</a></h4>
+                                        <p>{{ obj.body|safe|striptags|truncatewords:30}}}</p>
+                                        
+                                        <small> نوشته شده در تاریخ{{obj.publish|to_jalali:'%y/%m/%d ساعت %H:%M:%S'}}</small>
+                                        <small><a href="{% url 'posts:about_me'%}" title=""> توسط {{obj.auther.get_full_name}}</a></small>
+                                        
+                                    </div><!-- end meta -->
+                                </div><!-- end blog-box -->
+
+                                <hr class="invis">
+                                {% endfor %}
+
+
+
+                            </div>
+                        </div>
+
+                        <hr class="invis">
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <nav aria-label="Page navigation">
+                                    {% if is_paginated %}
+  <ul class="pagination justify-content-center">
+    {% if page_obj.has_previous %}
+      <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in paginator.page_range %}
+      {% if page_obj.number == i %}
+        <li class="page-item disabled"><a class ="page-link ">{{i}}</a></li>
+      {% else %}
+        <li class = "page-item"><a  class = "page-link"href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}
+      <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+
+                                </nav>
+                            </div><!-- end col -->
+                        </div><!-- end row -->
+                    </div><!-- end col -->
+                    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                        <div class="sidebar">
+
+
+                            <div class="widget">
+
+                                <h4 class="widget-title" dir="rtl">نوشته های اخیر</h4>
+                                <div class="blog-list-widget">
+                                    <div class="list-group">
+                                         <!-- Slideshow container -->
+                                            <div class="slideshow-container">
+                                            {% for n in nots_list%}
+                                            <!-- Full-width slides/quotes -->
+                                            <div class="mySlides">
+                                                <q>{{n.body}}</q>
+                                                
+                                            </div>
+                                            {% endfor %}
+                                            <!-- Next/prev buttons -->
+                                            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                                            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                                            </div>
+                                            <!-- Dots/bullets/indicators -->
+                                            
+                                            <div class="dot-container">
+                                            {% for n in count %}
+                                            <span class="dot" onclick="currentSlide('{{n}}')"></span>
+
+                                            {% endfor %}
+                                            </div> 
+ 
+
+                
+        
+                                        </div>
+                                     </div><!-- end blog-list -->
+                                </div><!-- end widget -->
+
+                            <div id="" class="widget">
+                                <h2 class="widget-title">تبلیغات</h2>
+                                <div class="banner-spot clearfix">
+                                    <div class="banner-img">
+                                        <img src="upload/banner_03.jpg" alt="" class="img-fluid">
+                                    </div><!-- end banner-img -->
+                                </div><!-- end banner -->
+                            </div><!-- end widget -->
+
+ 
+
+                            <div class="widget">
+                                <h2 class="widget-title">محبوب ترین نوشته ها</h2>
+                                <div class="link-widget">
+                                    <ul>
+                                        <li><a href="#">Marketing <span>(21)</span></a></li>
+                                    </ul>
+                                </div><!-- end link-widget -->
+                            </div><!-- end widget -->
+                        </div><!-- end sidebar -->
+                    </div><!-- end col -->
+
+
+
+                </div><!-- end row -->
+            </div><!-- end container -->
+        </section>
+
+    {% endblock %}
+
+  

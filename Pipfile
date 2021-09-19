@@ -1,0 +1,18 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+django = "*"
+pillow = "*"
+django-jalali-date = "*"
+django-crispy-forms = "*"
+psycopg2-binary = "==2.9.1"
+django-ckeditor = "*"
+python-decouple = "*"
+
+[requires]
+python_version = "3.9"
