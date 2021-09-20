@@ -1,5 +1,8 @@
-<<<<<<< HEAD
+
 # personal-blog
-=======
-# django-blog
->>>>>>> refs/remotes/origin/master
+ an personal blog with feature
+ 
+ a. subscribe email
+ b. customize admin panel
+ c. comment system
+ 
